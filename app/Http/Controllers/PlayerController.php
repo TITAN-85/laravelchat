@@ -54,16 +54,12 @@ class PlayerController extends Controller
      */
     public function store(Request $request)
     {
-        
-        // dd($request);
-        
         $newPlayer = Player::create([
             "name" => $request->playerName,
             "steam_id" => $request->playerSteamId,
             "player_cannibalism_id" => 1,
             "created_by" => Auth::user()->id
         ]);
-
         return redirect(route('players-index', $newPlayer->id));
     }
 
@@ -75,16 +71,18 @@ class PlayerController extends Controller
      */
     public function show(Player $player, Request $request)
     {
-        $pathInfo = $request->path();
+        // $pathInfo = $request->path();
         $idFromRoute = $request->route('players');
 
-        // dd($idFromRoute);
+        $player = Player::select()->where('player_id', $idFromRoute)->get();
+        // dd($player);
 
         $allComments = Comment::select()
+        // ->join('users', 'comment_player_id', '=', 'users.id' )
         ->where('comment_player_id', '=', $idFromRoute)
         ->get();
         // dd($allComments);
-
+        $allComments->player = $player;
         // $allComments = Comment::all();
 
         return view('players.show', ['comments' => $allComments]);
