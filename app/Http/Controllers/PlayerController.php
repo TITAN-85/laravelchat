@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 // use Barryvdh\DomPDF\Facade\PDF;
 use App\Http\Controllers\CommentController;
 use App\Models\Comment;
+use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -72,12 +73,15 @@ class PlayerController extends Controller
      * @param  \App\Models\Player  $player
      * @return \Illuminate\Http\Response
      */
-    public function show(Player $player)
+    public function show(Player $player, Request $request)
     {
-        dd($player);
+        $pathInfo = $request->path();
+        $idFromRoute = $request->route('players');
+
+        // dd($idFromRoute);
 
         $allComments = Comment::select()
-        ->where('comment_player_id', '=', $player->id)
+        ->where('comment_player_id', '=', $idFromRoute)
         ->get();
         // dd($allComments);
 
