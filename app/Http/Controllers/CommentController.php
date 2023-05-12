@@ -67,7 +67,7 @@ class CommentController extends Controller
             "comment_player_id" => $request->commentPlayerId,
             "comment_user_id" => Auth::user()->id
         ]);
-        return redirect(route('players-index', $newPlayer->id));
+        return redirect(route('players.show', $request->commentPlayerId));
     }
 
     /**

@@ -54,13 +54,24 @@ class PlayerController extends Controller
      */
     public function store(Request $request)
     {
-        $newPlayer = Player::create([
-            "name" => $request->playerName,
-            "steam_id" => $request->playerSteamId,
-            "player_cannibalism_id" => 1,
-            "created_by" => Auth::user()->id
-        ]);
-        return redirect(route('players-index', $newPlayer->id));
+
+        $player = Player::where('name', $request->playerName)->first();
+        // dd($player);
+        if ($player) {
+
+            return redirect(route('players.index'));
+
+        } else {
+            $newPlayer = Player::create([
+                "name" => $request->playerName,
+                "steam_id" => $request->playerSteamId,
+                "player_cannibalism_id" => 1,
+                "created_by" => Auth::user()->id
+            ]);
+
+            return redirect(route('players.index', $newPlayer->id));
+        }
+
     }
 
     /**
@@ -74,9 +85,9 @@ class PlayerController extends Controller
         $idFromRoute = $request->route('players');
         $player = Player::select()->where('player_id', $idFromRoute)->get();
         $allComments = Comment::select()
-        ->where('comment_player_id', '=', $idFromRoute)
-        ->get();
-        
+            ->where('comment_player_id', '=', $idFromRoute)
+            ->get();
+
         $allComments->player = $player;
 
         return view('players.show', ['comments' => $allComments]);

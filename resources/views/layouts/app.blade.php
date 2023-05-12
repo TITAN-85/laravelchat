@@ -77,7 +77,7 @@
                         <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
                             <li class="nav-item"><a class="nav-link" href="{{ route('home') }}">Home</a></li>
                             <li class="nav-item"><a class="nav-link" href="{{ route('chat') }}">Live Chat</a></li>
-                            <li class="nav-item"><a class="nav-link" href="{{ route('players-index') }}">Players</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{{ route('players.index') }}">Players</a></li>
                         </ul>
 
                         <!-- Right Side Of Navbar -->
