@@ -30,5 +30,10 @@ Route::get('/chat', [ChatsController::class, 'index'])->name('chat');
 Route::get('messages', [ChatsController::class, 'fetchMessages'])->name('messages');
 Route::post('/messages', [ChatsController::class, 'sendMessage'])->name('send.messages');
 
-Route::get('/players', [PlayerController::class, 'index'])->name('players');
+Route::get('/players', [PlayerController::class, 'index'])->name('players-index');
+Route::get('players-create', [PlayerController::class, 'create'])->name('players.create');
+Route::POST('/players-create', [PlayerController::class, 'store']);
 // Route::get('/players', [PlayerController::class, 'show'])->name('players');
+
+Route::get('comments/{comments}', [CommentController::class, 'show'])->name('comments.show');
+Route::get('players/{players}', [PlayerController::class, 'show'])->name('players.show');

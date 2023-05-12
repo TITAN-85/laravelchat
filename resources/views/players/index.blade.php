@@ -32,19 +32,17 @@
 </div> --}}
 
     <div class="container">
-        <div class="card">
-            <div class="card-header">Players</div>
+        <div class="card mt-5">
+            <div class="card-header">List of Players</div>
             <div class="card-body">
                 {{-- <chat-messages :messages="messages"></chat-messages> --}}
 
                 <div class="card-body">
                     @forelse ($players as $player)
                         <li>
-                            {{-- <a href="{{ route('action.show', $player->player_id)}}">{{ $player->name }}</a> --}}
-                            <a href="#">{{ $player->name }}</a>
+                            <a href="{{ route('players.show', $player->player_id)}}">{{ $player->name }}</a>
+                            <p>player id: {{$player->player_id}}</p>
                             <p>steam id: {{ $player->steam_id }}</p>
-                            <p>title: {{ $player->title }}</p>
-                            <p>comments: {{ $player->comment }}</p>
                         </li>
                     @empty
                         <li class="text-danger"> Rien </li>
@@ -52,9 +50,10 @@
                 </div>
 
             </div>
-            <div class="card-footer">
-                <chat-form v-on:messagesent="addMessage" :user="{{ Auth::user() }}"></chat-form>
-            </div>
+        </div>
+
+        <div class="card-footer">
+            <a href="{{ route('players.create') }}">Add player</a>
         </div>
     </div>
 

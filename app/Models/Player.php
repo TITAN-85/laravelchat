@@ -14,5 +14,6 @@ class Player extends Model
         "name",
         "steam_id",
         "player_cannibalism_id",
+        "created_by"
     ];
 }

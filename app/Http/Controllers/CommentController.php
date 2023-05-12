@@ -14,7 +14,11 @@ class CommentController extends Controller
      */
     public function index()
     {
-        //
+        $allPlayers = Comment::select()
+                ->where()
+                ->get();
+
+        return view('players.index', ['players' => $allPlayers]);
     }
 
     /**
@@ -46,7 +50,16 @@ class CommentController extends Controller
      */
     public function show(Comment $comment)
     {
-        //
+        // dd($comment);
+
+        // $allComments = Comment::select()
+        // ->where('comment_player_id', '=', $comment->id)
+        // ->get();
+        // dd($allComments);
+
+        // // $allComments = Comment::all();
+
+        // return view('players.show', ['comments' => $allComments]);
     }
 
     /**
