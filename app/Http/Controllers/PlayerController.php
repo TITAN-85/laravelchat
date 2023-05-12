@@ -4,6 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\Player;
 use Illuminate\Http\Request;
+// use Illuminate\Notifications\Action;
+// use Illuminate\Support\Facades\Auth;
+// use Barryvdh\DomPDF\Facade\PDF;
+use App\Http\Controllers\CommentController;
+use App\Models\Comment;
+
 
 class PlayerController extends Controller
 {
@@ -14,7 +20,18 @@ class PlayerController extends Controller
      */
     public function index()
     {
-        //
+        $allPlayers = Player::all();
+        $playerComments = Comment::all();
+        // dd($allPlayers);
+        // dd($playerComments);
+
+        $query = Player::select()
+                ->join('comments', 'player_id', '=', 'comment_player_id' )
+                ->get();
+
+        // dd($query);
+        return view('players.index', ['players' => $query]);
+        // return view('players.index', ['players' => $allPlayers]);
     }
 
     /**

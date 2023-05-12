@@ -1,8 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ChatsController;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\ChatsController;
+use App\Http\Controllers\CommentController;
+use App\Http\Controllers\PlayerController;
+use App\Http\Controllers\RateController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -25,3 +29,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/chat', [ChatsController::class, 'index'])->name('chat');
 Route::get('messages', [ChatsController::class, 'fetchMessages'])->name('messages');
 Route::post('/messages', [ChatsController::class, 'sendMessage'])->name('send.messages');
+
+Route::get('/players', [PlayerController::class, 'index'])->name('players');
+// Route::get('/players', [PlayerController::class, 'show'])->name('players');

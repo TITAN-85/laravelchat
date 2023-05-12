@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Player extends Model
 {
     use HasFactory;
+
+
+    protected $fillable = [
+        "name",
+        "steam_id",
+        "player_cannibalism_id",
+    ];
 }
