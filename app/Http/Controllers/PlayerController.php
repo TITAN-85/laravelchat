@@ -71,19 +71,13 @@ class PlayerController extends Controller
      */
     public function show(Player $player, Request $request)
     {
-        // $pathInfo = $request->path();
         $idFromRoute = $request->route('players');
-
         $player = Player::select()->where('player_id', $idFromRoute)->get();
-        // dd($player);
-
         $allComments = Comment::select()
-        // ->join('users', 'comment_player_id', '=', 'users.id' )
         ->where('comment_player_id', '=', $idFromRoute)
         ->get();
-        // dd($allComments);
+        
         $allComments->player = $player;
-        // $allComments = Comment::all();
 
         return view('players.show', ['comments' => $allComments]);
     }
