@@ -46,7 +46,7 @@
                                 class="p-2 rounded mb-2 bg-danger text-white ms-1">{{ $canibalismPoints }}</span>
                         </div>
 
-                        {{-- INPUT RATE --}}
+                        {{-- INPUT RATE TEMP--}}
                         <form class="form-row d-flex flex-row" action="{{ route('players.rate') }}" method="POST">
                             @method('POST')
                             @csrf
@@ -76,12 +76,46 @@
                         </form>
 
 
+                        {{-- INPUT RATE --}}
+                        {{-- <form class="form-row d-flex flex-row" action="{{ route('rates.store') }}" method="POST">
+                            @method('POST')
+                            @csrf
+                            <div class="pl-3 pr-3">
+                                <label class="form-control pl-3 pr-3" for="playerRate">Rate this player: -5 to +5</label>
+                            </div>
+
+                            <div class="gap-3 ms-2 me-2">
+                                <select class="form-control btn btn-info" name="rate" id="playerRate">
+                                    <option selected value="5">+5</option>
+                                    <option value="4">+4</option>
+                                    <option value="3">+3</option>
+                                    <option value="2">+2</option>
+                                    <option value="1">+1</option>
+                                    <option value="-1">-1</option>
+                                    <option value="-2">-2</option>
+                                    <option value="-3">-3</option>
+                                    <option value="-4">-4</option>
+                                    <option value="-5">-5</option>
+                                </select>
+                            </div>
+
+                            <div class="gap-3">
+                                <input type="submit" value="Rate" id="" class="btn btn-success"
+                                    class="">
+                            </div>
+                        </form> --}}
+
+
+                        {{-- ADD NEW COMMENT --}}
                         <a class="btn btn-success d-flex"
                             href="{{ route('comments.create'), $comments->player[0]->id }}">Add new comment</a>
                     </div>
+
                     <div class="card-body">
+                        {{-- INFO --}}
                         <p>Info: Each player starts with score rate +20, and canibalism 0</p>
 
+                        {{-- COMMENTS --}}
                         <div class="card-body">
                             @forelse ($comments as $comment)
                                 <li>

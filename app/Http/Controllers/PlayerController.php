@@ -44,9 +44,19 @@ class PlayerController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request); 
         $request->validate([
-            "name" => 'required|min:2|max:20'
+            "playerName" => 'required',
         ]);
+
+        // dd($request->playerName);
+
+
+        // $validated = validator($request->all(), [
+        //     "name" => ['required', 'min:2', 'max:40'],
+        //     // "steam_id" => 'max:50'
+        // ]);
+        // dd($validated);
 
 
         $player = Player::where('name', $request->playerName)->first();
@@ -59,7 +69,9 @@ class PlayerController extends Controller
                 "name" => $request->playerName,
                 "steam_id" => $request->playerSteamId,
                 "player_cannibalism_id" => 1,
-                "created_by" => Auth::user()->id
+                "created_by" => Auth::user()->id,
+                "canibalism_points" => 0,
+                "rate_points" => 20
             ]);
 
             return redirect(route('players.index', $newPlayer->id));

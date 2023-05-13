@@ -39,11 +39,9 @@ class CommentController extends Controller
         // dd($previousId);
 
         session()->put([
-            // 'url.intended' => url()->full(),
             'id' => $previousId
         ]);
-        // dd(session());
-        // $pathInfo = $request->path();
+        // dd(session('id'));
         $idFromRoute = $request;
 
 
@@ -62,18 +60,24 @@ class CommentController extends Controller
     {
         // dd($request);
 
+        session()->put([
+            'id' => $request->commentPlayerId
+        ]);
+
+        $idFromSession = session('id');
+
         $request->validate([
             "title" => 'required|min:2|max:50',
             "comment" => 'required|min:10|max:1500'
         ]);
 
         $newPlayer = Comment::create([
-            "title" => $request->commentTitle,
-            "comment" => $request->commentInput,
-            "comment_player_id" => $request->commentPlayerId,
+            "title" => $request->title,
+            "comment" => $request->comment,
+            "comment_player_id" => $idFromSession,
             "comment_user_id" => Auth::user()->id
         ]);
-        return redirect(route('players.show', $request->commentPlayerId));
+        return redirect(route('players.show', $idFromSession));
     }
 
     /**

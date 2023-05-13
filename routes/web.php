@@ -44,3 +44,5 @@ Route::POST('/comments-create', [CommentController::class, 'store']);
 Route::get('/search', [PlayerController::class, 'search'])->name('search');
 
 
+// Route::POST('/players', [RateController::class, 'store'])->name('rates.store');
+// Route::POST('/rate-store', [RateController::class, 'store']);

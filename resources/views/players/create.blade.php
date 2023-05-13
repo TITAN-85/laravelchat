@@ -24,11 +24,11 @@
                     </div>
                 @endif
 
-                <input class="form-control" name="playerName" type="text" placeholder="Type player name here*">
+                <input class="form-control" name="playerName" type="text" placeholder="Type player name here*" >
+                {{-- value="{{ request()->old($attributes->get('name'))}}" --}}
                 <input class="form-control" name="playerSteamId" type="text" placeholder="Steam id ?">
                 <div class="card-footer">
-                    {{-- FIXME: Validate if its empty --}}
-                    <input type="submit" value="Add new player" name="saveArticle" id="saveArticle"
+                    <input type="submit" value="Add new player" 
                         class="btn btn-success">
                     <a href="{{ route('players.index') }}" class="btn btn-danger">Back</a>
                 </div>

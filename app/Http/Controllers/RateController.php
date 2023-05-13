@@ -35,7 +35,24 @@ class RateController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $rate = $request->rate;
+        // dd($rate);
+
+        $previousUrl = session()->get('url.intended', url()->previous());
+        $previousId = null;
+        if (str_contains($previousUrl, '/players/')) {
+            $previousId = substr($previousUrl, strpos($previousUrl, '/players/') + 9);
+        }
+        session()->put([
+            'id' => $previousId
+        ]);
+
+        // dd($previousId);
+
+        if ($rate > 5 || $rate < -5 ) {
+            return redirect(route('players.show', $previousId ));
+        }
+
     }
 
     /**
