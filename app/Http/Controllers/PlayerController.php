@@ -132,6 +132,10 @@ class PlayerController extends Controller
      */
     public function search(Request $request)
     {
+        // $request->validate([
+        //     "name" => 'required|min:2|max:50'
+        // ]);
+
         $search = $request->search;
         // $search = $_GET['search'];
         // dd($search);
@@ -163,7 +167,6 @@ class PlayerController extends Controller
             'id' => $previousId
         ]);
 
-        
         if ($rate > 5 || $rate < -5 ) {
             return redirect(route('players.show', $previousId ));
         }
@@ -172,8 +175,6 @@ class PlayerController extends Controller
         $rate = $rate + $actualoints[0];
         Player::where('player_id', $previousId)->update(['rate_points' => $rate]);
 
-        // dd($previousId);
-
         $player = Player::select()->where('player_id', $previousId)->get();
         $allComments = Comment::select()
             ->join('players', 'comment_player_id', '=', 'player_id')
@@ -181,9 +182,6 @@ class PlayerController extends Controller
             ->get();
 
         $allComments->player = $player;
-        // dd($allComments->player[0]->rate_points);
-
-        // return view('players.show', ['comments' => $allComments]);
 
         return redirect(route('players.show', $previousId ));
     }
