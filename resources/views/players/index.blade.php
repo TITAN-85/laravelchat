@@ -10,14 +10,14 @@
                     <div class="d-flex justify-content-between">
                         <div class="card-header">List of Players</div>
 
-                        <form class="form" action="GET">
+                        <form class="form" action="{{ route('search')}}" method="GET">
                             @method('GET')
                             @csrf
                             <div class="input-group mb-3">
-                                <input type="text" class="form-control" placeholder="Find an existing Player"
+                                <input name="search" type="text" class="form-control" placeholder="Find an existing Player"
                                     aria-label="Recipient's username" aria-describedby="basic-addon2">
                                 <div class="input-group-append">
-                                    <button class="btn btn-primary" type="button">Find</button>
+                                    <button class="btn btn-primary" type="submit">Find</button>
                                 </div>
                             </div>
                         </form>
@@ -34,11 +34,12 @@
                                     {{-- <p>player id: {{ $player->player_id }}</p> --}}
                                     {{-- <p>steam id: {{ $player->steam_id }}</p> --}}
                                 </li>
+                                {{-- For pagination TODO: --}}
+                                {{-- {{ $users->appends(['search' => request()->search])->links() }} --}}
                             @empty
-                                <li class="text-danger"> Rien </li>
+                                <li class="text-danger"> No players </li>
                             @endforelse
                         </div>
-
                     </div>
                 </div>
             </div>

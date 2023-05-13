@@ -38,4 +38,6 @@ Route::get('comments/{comments}', [CommentController::class, 'show'])->name('com
 Route::get('comments-create', [CommentController::class, 'create'])->name('comments.create');
 Route::POST('/comments-create', [CommentController::class, 'store']);
 
+Route::get('/search', [PlayerController::class, 'search'])->name('search');
+
 

@@ -126,4 +126,24 @@ class PlayerController extends Controller
     {
         //
     }
+
+    /**
+     * Search the specified resource from storage.
+     *
+     * @param  \App\Models\Comment  $comment
+     * @return \Illuminate\Http\Response
+     */
+    public function search(Request $request)
+    {
+        $search = $request->search;
+        // $search = $_GET['search'];
+        // dd($search);
+
+        // $player = Player::where()->orderBy('name')->paginate(10)
+        $players = Player::where('name', 'LIKE', "%{$search}%")->get();
+
+        // dd($players);
+
+        return view('players.index', ['players' => $players]);
+    }
 }
