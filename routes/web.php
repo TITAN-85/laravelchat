@@ -32,7 +32,10 @@ Route::post('/messages', [ChatsController::class, 'sendMessage'])->name('send.me
 Route::get('/players', [PlayerController::class, 'index'])->name('players.index');
 Route::get('players-create', [PlayerController::class, 'create'])->name('players.create');
 Route::POST('/players-create', [PlayerController::class, 'store']);
+Route::POST('/players', [PlayerController::class, 'rate'])->name('players.rate');
 Route::get('players/{players}', [PlayerController::class, 'show'])->name('players.show');
+// Route::put('players-edit/{players}', [PlayerController::class, 'update'])->name('players.rate');
+
 
 Route::get('comments/{comments}', [CommentController::class, 'show'])->name('comments.show');
 Route::get('comments-create', [CommentController::class, 'create'])->name('comments.create');

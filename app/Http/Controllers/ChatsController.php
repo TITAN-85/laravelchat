@@ -11,7 +11,7 @@ class ChatsController extends Controller
 {
     public function __construct()
     {
-    $this->middleware('auth');
+        $this->middleware('auth');
     }
 
 
@@ -22,25 +22,26 @@ class ChatsController extends Controller
      */
     public function index()
     {
-    return view('chat');
+        return view('chat');
     }
 
-    public function fetchMessages(){
+    public function fetchMessages()
+    {
         return Message::with('user')->get();
     }
 
     public function sendMessage(Request $request)
     {
-    $user = Auth::user();
-    $message = $user->messages()->create([
-        'message' => $request->input('message')
-    ]);
-    broadcast(new MessageSent($user, $message))->toOthers();
+        // $request->validate([
+        //     "message" => 'required|min:2|max:50'
+        // ]);
 
-    return ['status' => 'Message Sent!'];
+        $user = Auth::user();
+        $message = $user->messages()->create([
+            'message' => $request->input('message')
+        ]);
+        broadcast(new MessageSent($user, $message))->toOthers();
+
+        return ['status' => 'Message Sent!'];
     }
-    
-    
-
-
 }

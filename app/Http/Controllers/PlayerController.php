@@ -23,16 +23,6 @@ class PlayerController extends Controller
     public function index()
     {
         $allPlayers = Player::all();
-        // $playerComments = Comment::all();
-        // dd($allPlayers);
-        // dd($playerComments);
-
-        // $query = Comment::select()
-        //         ->leftjoin('players', 'player_id', '=', 'comment_player_id' )
-        //         ->get();
-
-        // dd($query);
-        // return view('players.index', ['players' => $query]);
         return view('players.index', ['players' => $allPlayers]);
     }
 
@@ -54,13 +44,16 @@ class PlayerController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            "name" => 'required|min:2|max:20'
+        ]);
+
 
         $player = Player::where('name', $request->playerName)->first();
         // dd($player);
         if ($player) {
 
             return redirect(route('players.index'));
-
         } else {
             $newPlayer = Player::create([
                 "name" => $request->playerName,
@@ -71,7 +64,6 @@ class PlayerController extends Controller
 
             return redirect(route('players.index', $newPlayer->id));
         }
-
     }
 
     /**
@@ -85,9 +77,9 @@ class PlayerController extends Controller
         $idFromRoute = $request->route('players');
         $player = Player::select()->where('player_id', $idFromRoute)->get();
         $allComments = Comment::select()
+            ->join('players', 'comment_player_id', '=', 'player_id')
             ->where('comment_player_id', '=', $idFromRoute)
             ->get();
-
         $allComments->player = $player;
 
         return view('players.show', ['comments' => $allComments]);
@@ -113,7 +105,12 @@ class PlayerController extends Controller
      */
     public function update(Request $request, Player $player)
     {
-        //
+        dd($player);
+        $player->update([
+            "rate_points" => $request->rate,
+            // "canibalism_points" => $request->playerName
+        ]);
+        return redirect(route('players.show', $player->id));
     }
 
     /**
@@ -145,5 +142,49 @@ class PlayerController extends Controller
         // dd($players);
 
         return view('players.index', ['players' => $players]);
+    }
+
+    /**
+     * Search the specified resource from storage.
+     *
+     * @param  \App\Models\Comment  $comment
+     * @return \Illuminate\Http\Response
+     */
+    public function rate(Request $request, Player $player)
+    {
+        $rate = $request->rate;
+
+        $previousUrl = session()->get('url.intended', url()->previous());
+        $previousId = null;
+        if (str_contains($previousUrl, '/players/')) {
+            $previousId = substr($previousUrl, strpos($previousUrl, '/players/') + 9);
+        }
+        session()->put([
+            'id' => $previousId
+        ]);
+
+        
+        if ($rate > 5 || $rate < -5 ) {
+            return redirect(route('players.show', $previousId ));
+        }
+        $actualoints = Player::where('player_id', $previousId)->pluck('rate_points');
+
+        $rate = $rate + $actualoints[0];
+        Player::where('player_id', $previousId)->update(['rate_points' => $rate]);
+
+        // dd($previousId);
+
+        $player = Player::select()->where('player_id', $previousId)->get();
+        $allComments = Comment::select()
+            ->join('players', 'comment_player_id', '=', 'player_id')
+            ->where('comment_player_id', '=', $previousId)
+            ->get();
+
+        $allComments->player = $player;
+        // dd($allComments->player[0]->rate_points);
+
+        // return view('players.show', ['comments' => $allComments]);
+
+        return redirect(route('players.show', $previousId ));
     }
 }

@@ -7,12 +7,30 @@
             <div class="form-group col-md-6">
                 @method('POST')
                 @csrf
+
+                @if ($message = Session::get('success'))
+                    <div class="alert alert-success">
+                        <strong>{{ $message }}</strong>
+                    </div>
+                @endif
+
+                @if (count($errors) > 0)
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+
                 <input class="form-control" name="playerName" type="text" placeholder="Type player name here*">
                 <input class="form-control" name="playerSteamId" type="text" placeholder="Steam id ?">
-                {{-- <input class="form-control" value="1" name="player_cannibalism_id" type="hidden" placeholder="Steam id ?"> --}}
                 <div class="card-footer">
-                    <input type="submit" value="Add new player" name="saveArticle" id="saveArticle" class="btn btn-success">
-                    <input type="submit" value="back" name="saveArticle" id="saveArticle" class="btn btn-danger">
+                    {{-- FIXME: Validate if its empty --}}
+                    <input type="submit" value="Add new player" name="saveArticle" id="saveArticle"
+                        class="btn btn-success">
+                    <a href="{{ route('players.index') }}" class="btn btn-danger">Back</a>
                 </div>
             </div>
         </form>

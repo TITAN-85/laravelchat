@@ -62,6 +62,11 @@ class CommentController extends Controller
     {
         // dd($request);
 
+        $request->validate([
+            "title" => 'required|min:2|max:50',
+            "comment" => 'required|min:10|max:1500'
+        ]);
+
         $newPlayer = Comment::create([
             "title" => $request->commentTitle,
             "comment" => $request->commentInput,
