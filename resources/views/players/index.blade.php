@@ -20,7 +20,7 @@
                                 <div class="input-group-append">
                                     <button class="btn btn-primary" type="submit">Find</button>
                                 </div>
-{{-- 
+                                {{-- 
                                 @if ($message = Session::get('success'))
                                     <div class="alert alert-success">
                                         <strong>{{ $message }}</strong>
@@ -36,7 +36,7 @@
                                         </ul>
                                     </div>
                                 @endif --}}
-                                
+
                             </div>
                         </form>
 
@@ -57,7 +57,11 @@
                             @empty
                                 <li class="text-danger"> No players </li>
                             @endforelse
+
                         </div>
+                    </div>
+                    <div class="card-footer">
+                        {{ $players->links() }}
                     </div>
                 </div>
             </div>

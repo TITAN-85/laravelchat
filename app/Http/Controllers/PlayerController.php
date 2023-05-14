@@ -22,7 +22,8 @@ class PlayerController extends Controller
      */
     public function index()
     {
-        $allPlayers = Player::all();
+        $allPlayers = Player::paginate('15');
+        // dd($allPlayers);
         return view('players.index', ['players' => $allPlayers]);
     }
 
@@ -87,6 +88,7 @@ class PlayerController extends Controller
     public function show(Player $player, Request $request)
     {
         $idFromRoute = $request->route('players');
+        $player = Player::paginate('2');
         $player = Player::select()->where('player_id', $idFromRoute)->get();
         $allComments = Comment::select()
             ->join('players', 'comment_player_id', '=', 'player_id')

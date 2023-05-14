@@ -24,6 +24,7 @@
         "vue-template-compiler": "^2.6.12"
     },
     "dependencies": {
+        "bootstrap-pagination": "^1.1.0",
         "laravel-echo": "^1.15.0",
         "pusher-js": "^8.0.1"
     }
