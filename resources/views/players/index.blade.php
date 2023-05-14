@@ -5,7 +5,7 @@
     @if (Auth::check())
         @if (Auth::user()->id)
 
-            <div class="container">
+            <div class="container pt-5">
                 <div class="card mt-5">
                     <div class="d-flex justify-content-between">
                         <div class="card-header">List of Players</div>
