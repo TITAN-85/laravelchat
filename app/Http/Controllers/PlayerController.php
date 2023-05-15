@@ -22,7 +22,8 @@ class PlayerController extends Controller
      */
     public function index()
     {
-        $allPlayers = Player::paginate('15');
+        // $allPlayers = Player::paginate('15');
+        $allPlayers = Player::all();
         // dd($allPlayers);
         return view('players.index', ['players' => $allPlayers]);
     }
@@ -149,7 +150,7 @@ class PlayerController extends Controller
         // $request->validate([
         //     "name" => 'required|min:2|max:50'
         // ]);
-
+        // Player::paginate('15')
         $search = $request->search;
         // $search = $_GET['search'];
         // dd($search);

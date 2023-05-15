@@ -9,7 +9,7 @@
                 <div class="card mt-5">
                     <div class="d-flex justify-content-between">
 
-                        <div class="card-header">All comments of player: <strong class="text-danger ms-1 me-4">
+                        <div class="card-header">Player Comments : <strong class="text-danger ms-1 me-4">
                                 {{-- SHOW NAME --}}
                                 {{ $comments->player[0]->name }}
 
@@ -29,7 +29,7 @@
                                         $rate = $comments->player[0]->rate_points;
                                     @endphp
                                 @endif
-                            </strong> His Score Rate is:
+                            </strong>Score Rate:
                             <span class="p-2 rounded mb-2 bg-warning text-white ms-1 me-4"> {{ $rate }} </span>
                             </strong>
                             @php
@@ -42,7 +42,7 @@
                                     @endphp
                                 @endif
                             @endisset
-                            Canibalism points:<span
+                            Canibalism:<span
                                 class="p-2 rounded mb-2 bg-danger text-white ms-1">{{ $canibalismPoints }}</span>
                         </div>
 

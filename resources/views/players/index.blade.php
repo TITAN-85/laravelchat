@@ -53,7 +53,6 @@
                                     {{-- <p>steam id: {{ $player->steam_id }}</p> --}}
                                 </li>
                                 {{-- For pagination TODO: --}}
-                                {{-- {{ $users->appends(['search' => request()->search])->links() }} --}}
                             @empty
                                 <li class="text-danger"> No players </li>
                             @endforelse
@@ -61,7 +60,7 @@
                         </div>
                     </div>
                     <div class="card-footer">
-                        {{ $players->links() }}
+                        {{-- {{ $players->links() }} --}}
                     </div>
                 </div>
             </div>

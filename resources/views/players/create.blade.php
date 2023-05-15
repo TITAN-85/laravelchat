@@ -26,7 +26,7 @@
 
                 <input class="form-control" name="playerName" type="text" placeholder="Type player name here*" >
                 {{-- value="{{ request()->old($attributes->get('name'))}}" --}}
-                <input class="form-control" name="playerSteamId" type="text" placeholder="Steam id ?">
+                <input class="form-control" name="playerSteamId" type="text" placeholder="Steam id? - optional">
                 <div class="card-footer">
                     <input type="submit" value="Add new player" 
                         class="btn btn-success">
