@@ -56,11 +56,11 @@
 
                             <div class="gap-3 ms-2 me-2">
                                 <select class="form-control btn btn-info" name="rate" id="playerRate">
-                                    <option selected value="5">+5</option>
+                                    <option value="5">+5</option>
                                     <option value="4">+4</option>
                                     <option value="3">+3</option>
                                     <option value="2">+2</option>
-                                    <option value="1">+1</option>
+                                    <option value="1" selected>+1</option>
                                     <option value="-1">-1</option>
                                     <option value="-2">-2</option>
                                     <option value="-3">-3</option>

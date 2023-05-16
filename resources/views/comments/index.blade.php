@@ -24,7 +24,6 @@
                                 <li class="text-danger"> Rien </li>
                             @endforelse
                         </div>
-
                     </div>
                 </div>
 

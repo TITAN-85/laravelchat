@@ -3,7 +3,7 @@
 @section('content')
 
     <section class="container">
-        <form class="row mb-5 justify-content-center" method="POST">
+        <form class="row mb-5 mt-5 justify-content-center" method="POST">
             {{-- <div class="form-row"> --}}
             <div class="form-group col-md-6">
                 @method('POST')
