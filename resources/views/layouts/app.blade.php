@@ -44,6 +44,14 @@
     <!-- Core theme JS-->
     <!-- <script src="js/scripts.js"></script> -->
     <script src="{{ asset('js/scripts.js') }}"></script>
+
+    {{-- TEST --}}
+    <script src="{{ asset('js/countdown.js') }}" defer></script>
+
+    {{-- TEST --}}
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
     <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
     <!-- * *                               SB Forms JS                               * *-->
     <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->

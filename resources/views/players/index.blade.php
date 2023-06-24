@@ -10,6 +10,92 @@
     </div>
 </header>
 
+{{-- <div id="countdown">TIMER</div>
+<div>
+    <button id="startButton">Start Timer</button>
+    <button id="stopButton">Stop Timer</button>
+  </div> --}}
+
+  
+{{-- TIMERS STOP BUTTONS DONT WORK --}}
+  {{-- <div>
+    <span>Timer 1: </span>
+    <span id="timer1">2:00</span>
+    <button id="start1">Start</button>
+    <button id="stop1">Stop</button>
+    <button id="reset1">Reset</button>
+</div>
+
+<div>
+    <span>Timer 2: </span>
+    <span id="timer2">20:00</span>
+    <button id="start2">Start</button>
+    <button id="stop2">Stop</button>
+    <button id="reset2">Reset</button>
+</div>
+
+<div>
+    <span>Game Timer: </span>
+    <span id="timer3">0:00</span>
+    <button id="start3">Start</button>
+    <button id="stop3">Stop</button>
+    <button id="reset3">Reset</button>
+</div> --}}
+  
+
+
+{{-- GAME TIMER DONT START --}}
+{{-- <div>
+    <span>Timer 1: </span>
+    <span id="timer1">2:00</span>
+    <button id="start1">Start</button>
+    <button id="stop1">Stop</button>
+    <button id="reset1">Reset</button>
+</div>
+
+<div>
+    <span>Timer 2: </span>
+    <span id="timer2">20:00</span>
+    <button id="start2">Start</button>
+    <button id="stop2">Stop</button>
+    <button id="reset2">Reset</button>
+</div>
+
+<div>
+    <span>Game Timer: </span>
+    <span id="timer3">0:00</span>
+    <button id="start3">Start</button>
+    <button id="stop3">Stop</button>
+    <button id="reset3">Reset</button>
+</div> --}}
+
+
+
+<div>
+    <span>Timer 1: </span>
+    <span id="timer1">2:00</span>
+    <button id="start1">Start</button>
+    <button id="stop1">Stop</button>
+    <button id="reset1">Reset</button>
+</div>
+
+<div>
+    <span>Timer 2: </span>
+    <span id="timer2">20:00</span>
+    <button id="start2">Start</button>
+    <button id="stop2">Stop</button>
+    <button id="reset2">Reset</button>
+</div>
+
+<div>
+    <span>Game Timer: </span>
+    <span id="timer3">0:00</span>
+    <button id="start3">Start</button>
+    <button id="stop3">Stop</button>
+    <button id="reset3">Reset</button>
+</div>
+
+
     @if (Auth::check())
         @if (Auth::user()->id)
 
