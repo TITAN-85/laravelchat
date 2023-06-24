@@ -37,7 +37,7 @@
     <!-- <link href="css/styles.css" rel="stylesheet" /> -->
     <link href="../css/styles.css" rel="stylesheet" />
 
-
+    <link rel="stylesheet" href="">
     <!-- Bootstrap core JS-->
     {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script> FIXME: --}}
 
@@ -49,6 +49,7 @@
     <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
     <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
     <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+    <link rel="stylesheet" href="{{ asset('css/menu.css')}}">
 
 </head>
 
@@ -65,47 +66,42 @@
                     aria-label="Toggle navigation"> Menu <i class="fas fa-bars ms-1"></i>
                 </button>
 
-
                 {{-- <div class="collapse navbar-collapse" id="navbarSupportedContent"> --}}
                 <div class="collapse navbar-collapse" id="navbarResponsive">
 
 
-                    <!-- Left Side Of Navbar -->
-                    {{-- <ul class="navbar-nav me-auto"></ul> --}}
-
-
                     <div class="collapse navbar-collapse" id="navbarResponsive">
                         <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-                            <li class="nav-item"><a class="nav-link" href="{{ route('home') }}">Home</a></li>
-                            <li class="nav-item"><a class="nav-link" href="{{ route('chat') }}">Live Chat</a></li>
+                            <li class="nav-item "><a class="nav-link nav__menu" href="{{ route('home') }}">Home</a></li>
+                            <li class="nav-item "><a class="nav-link nav__menu" href="{{ route('chat') }}">Live Chat</a></li>
                             @if (Auth::check())
                                 @if (Auth::user()->id)
-                                    <li class="nav-item"><a class="nav-link"
+                                    <li class="nav-item"><a class="nav-link nav__menu"
                                             href="{{ route('players.index') }}">Players</a></li>
                                 @endif
                             @else
-                                <li class="nav-item"><a class="nav-link" href="{{ route('login') }}">Players</a></li>
+                                <li class="nav-item "><a class="nav-link nav__menu" href="{{ route('login') }}">Players</a></li>
                             @endif
                         </ul>
 
-                        <!-- Right Side Of Navbar -->
+                        {{-- Right Side Of Navbar --}}
                         <ul class="navbar-nav ms-auto">
-                            <!-- Authentication Links -->
+                            {{-- Authentication Links --}}
                             @guest
                                 @if (Route::has('login'))
                                     <li class="nav-item">
-                                        <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                        <a class="nav-link nav__menu" href="{{ route('login') }}">{{ __('Login') }}</a>
                                     </li>
                                 @endif
 
                                 @if (Route::has('register'))
                                     <li class="nav-item">
-                                        <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                        <a class="nav-link nav__menu" href="{{ route('register') }}">{{ __('Register') }}</a>
                                     </li>
                                 @endif
                             @else
                                 <li class="nav-item dropdown">
-                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                                    <a id="navbarDropdown" class="nav-link nav__menu dropdown-toggle" href="#" role="button"
                                         data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                         {{ Auth::user()->name }}
                                     </a>
@@ -124,6 +120,7 @@
                                     </div>
                                 </li>
                             @endguest
+                            
                         </ul>
                     </div>
                 </div>

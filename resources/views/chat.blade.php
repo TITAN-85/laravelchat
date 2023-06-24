@@ -1,5 +1,14 @@
 @extends('layouts.app')
 @section('content')
+
+<header class="masthead masthead-chat">
+    <div class="container">
+        <div class="masthead-subheading">The Isle chat</div>
+        {{-- <div class="masthead-heading text-uppercase">It's Nice To Meet You</div> --}}
+        <!-- <a class="btn btn-primary btn-xl text-uppercase" href="services">About me</a> -->
+    </div>
+</header>
+
     <div class="container pt-5">
         <div class="card mt-5">
             <div class="card-header">Chats</div>

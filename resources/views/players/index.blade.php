@@ -2,19 +2,33 @@
 @section('title', 'players')
 @section('content')
 
+<header class="masthead masthead-players">
+    <div class="container">
+        <div class="masthead-subheading">The Isle players</div>
+        {{-- <div class="masthead-heading text-uppercase">It's Nice To Meet You</div> --}}
+        <!-- <a class="btn btn-primary btn-xl text-uppercase" href="services">About me</a> -->
+    </div>
+</header>
+
     @if (Auth::check())
         @if (Auth::user()->id)
 
-            <div class="container pt-5">
-                {{-- <div class="card mt-5"> --}}
+            <div class="container">
+
+                <div class="my-5">
+                    <div class="h2 text-center">List of players</div>
+                </div>
+
+                <div class="card my-5">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="card-header">List of Players</div>
+                        </div>
+                    </div>
 
                     <div class="row">
-                            <div class="col-sm-"> 
-                            
-                            <div class="card-header">List of Players</div>
-
-
-                            <form class="form" action="{{ route('search') }}" method="GET">
+                        <div class="col-md-6 ">
+                            <form class="form m-2" action="{{ route('search') }}" method="GET">
                                 @method('GET')
                                 @csrf
                                 <div class="input-group mb-3">
@@ -42,8 +56,10 @@
                                     @endif --}}
                                 </div>
                             </form>
+                        </div>
 
-                            <a class="btn btn-success d-flex" href="{{ route('players.create') }}">Add a new player</a>
+                        <div class="col-md-6">
+                            <a class="btn btn-success d-flex m-2" href="{{ route('players.create') }}">Add a new player</a>
                         </div>
                     </div>
 
@@ -71,8 +87,8 @@
                     <div class="card-footer">
                         {{-- {{ $players->links() }} --}}
                     </div>
-                {{-- </div> --}}
-            </div>
+                    {{-- </div> --}}
+                </div>
 
         @endif
     @endif

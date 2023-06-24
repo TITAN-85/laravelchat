@@ -2,8 +2,17 @@
 @section('title', 'players')
 @section('content')
 
+<header class="masthead masthead-create-player">
+    <div class="container">
+        <div class="masthead-subheading">The Isle chat</div>
+        {{-- <div class="masthead-heading text-uppercase">It's Nice To Meet You</div> --}}
+        <!-- <a class="btn btn-primary btn-xl text-uppercase" href="services">About me</a> -->
+    </div>
+</header>
+
     <section class="container">
         <form class="row mb-5 mt-5 justify-content-center" method="POST">
+            
             <div class="form-group col-md-6">
                 @method('POST')
                 @csrf
