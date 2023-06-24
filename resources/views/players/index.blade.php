@@ -6,42 +6,51 @@
         @if (Auth::user()->id)
 
             <div class="container pt-5">
-                <div class="card mt-5">
-                    <div class="d-flex justify-content-between">
-                        <div class="card-header">List of Players</div>
+                {{-- <div class="card mt-5"> --}}
 
-                        <form class="form" action="{{ route('search') }}" method="GET">
-                            @method('GET')
-                            @csrf
-                            <div class="input-group mb-3">
-                                <input name="search" type="text" class="form-control"
-                                    placeholder="Find an existing Player" aria-label="Recipient's username"
-                                    aria-describedby="basic-addon2">
-                                <div class="input-group-append">
-                                    <button class="btn btn-primary" type="submit">Find</button>
+                    <div class="row">
+                            <div class="col-sm-"> 
+                            
+                            <div class="card-header">List of Players</div>
+
+
+                            <form class="form" action="{{ route('search') }}" method="GET">
+                                @method('GET')
+                                @csrf
+                                <div class="input-group mb-3">
+                                    <input name="search" type="text" class="form-control"
+                                        placeholder="Find an existing Player" aria-label="Recipient's username"
+                                        aria-describedby="basic-addon2">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-primary" type="submit">Find</button>
+                                    </div>
+                                    {{-- 
+                                    @if ($message = Session::get('success'))
+                                        <div class="alert alert-success">
+                                            <strong>{{ $message }}</strong>
+                                        </div>
+                                    @endif
+
+                                    @if (count($errors) > 0)
+                                        <div class="alert alert-danger">
+                                            <ul>
+                                                @foreach ($errors->all() as $error)
+                                                    <li>{{ $error }}</li>
+                                                @endforeach
+                                            </ul>
+                                        </div>
+                                    @endif --}}
                                 </div>
-                                {{-- 
-                                @if ($message = Session::get('success'))
-                                    <div class="alert alert-success">
-                                        <strong>{{ $message }}</strong>
-                                    </div>
-                                @endif
+                            </form>
 
-                                @if (count($errors) > 0)
-                                    <div class="alert alert-danger">
-                                        <ul>
-                                            @foreach ($errors->all() as $error)
-                                                <li>{{ $error }}</li>
-                                            @endforeach
-                                        </ul>
-                                    </div>
-                                @endif --}}
-
-                            </div>
-                        </form>
-
-                        <a class="btn btn-success d-flex" href="{{ route('players.create') }}">Add a new player</a>
+                            <a class="btn btn-success d-flex" href="{{ route('players.create') }}">Add a new player</a>
+                        </div>
                     </div>
+
+
+
+
+
                     <div class="card-body">
                         {{-- <chat-messages :messages="messages"></chat-messages> --}}
 
@@ -62,7 +71,7 @@
                     <div class="card-footer">
                         {{-- {{ $players->links() }} --}}
                     </div>
-                </div>
+                {{-- </div> --}}
             </div>
 
         @endif
