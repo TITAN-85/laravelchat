@@ -1,6 +1,6 @@
 @extends('layouts.app')
-@section('title', 'players')
-@section('content')
+@div('title', 'players')
+@div('content')
 
 <header class="masthead masthead-players">
     <div class="container">
@@ -99,83 +99,93 @@
     @if (Auth::check())
         @if (Auth::user()->id)
 
+            {{-- Title  --}}
+            <div class="my-4">
+                <div class="h2 text-center">List of players</div>
+            </div>
+
             <div class="container">
 
-                <div class="my-5">
-                    <div class="h2 text-center">List of players</div>
-                </div>
+                <div class="my-4">
 
-                <div class="card my-5">
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <div class="card-header">List of Players</div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-6 ">
-                            <form class="form m-2" action="{{ route('search') }}" method="GET">
-                                @method('GET')
-                                @csrf
-                                <div class="input-group mb-3">
-                                    <input name="search" type="text" class="form-control"
-                                        placeholder="Find an existing Player" aria-label="Recipient's username"
-                                        aria-describedby="basic-addon2">
-                                    <div class="input-group-append">
-                                        <button class="btn btn-primary" type="submit">Find</button>
-                                    </div>
-                                    {{-- 
-                                    @if ($message = Session::get('success'))
-                                        <div class="alert alert-success">
-                                            <strong>{{ $message }}</strong>
-                                        </div>
-                                    @endif
-
-                                    @if (count($errors) > 0)
-                                        <div class="alert alert-danger">
-                                            <ul>
-                                                @foreach ($errors->all() as $error)
-                                                    <li>{{ $error }}</li>
-                                                @endforeach
-                                            </ul>
-                                        </div>
-                                    @endif --}}
+                    {{-- Search input --}}
+                    <div class="d-flex justify-content-center">
+                        <form class="form m-2" action="{{ route('search') }}" method="GET">
+                            @method('GET')
+                            @csrf
+                            <div class="input-group mb-3">
+                                <input name="search" type="text" class="form-control"
+                                    placeholder="Find an existing Player" aria-label="Recipient's username"
+                                    aria-describedby="basic-addon2">
+                                <div class="input-group-append">
+                                    <button class="btn btn-primary" type="submit">Find</button>
                                 </div>
-                            </form>
-                        </div>
+                                {{-- 
+                                @if ($message = Session::get('success'))
+                                    <div class="alert alert-success">
+                                        <strong>{{ $message }}</strong>
+                                    </div>
+                                @endif
 
-                        <div class="col-md-6">
+                                @if (count($errors) > 0)
+                                    <div class="alert alert-danger">
+                                        <ul>
+                                            @foreach ($errors->all() as $error)
+                                                <li>{{ $error }}</li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                    @endif --}}
+                            </div>
+                        </form>
+                        
+                        {{-- Adding button input --}}
+                        <div class="">
                             <a class="btn btn-success d-flex m-2" href="{{ route('players.create') }}">Add a new player</a>
                         </div>
                     </div>
+                </div>
 
 
 
+                <div class="my-4">
 
-
-                    <div class="card-body">
-                        {{-- <chat-messages :messages="messages"></chat-messages> --}}
-
+                    {{-- ============================== CARD ============================= --}}
+                    <div class="card ">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="card-header">List of Players</div>
+                            </div>
+                        </div>
+                        
+                        {{-- Card body --}}
                         <div class="card-body">
-                            @forelse ($players as $player)
+                            {{-- <chat-messages :messages="messages"></chat-messages> --}}
+                            
+                            <div class="card-body">
+                                @forelse ($players as $player)
                                 <li>
                                     <a href="{{ route('players.show', $player->player_id) }}">{{ $player->name }}</a>
                                     {{-- <p>player id: {{ $player->player_id }}</p> --}}
                                     {{-- <p>steam id: {{ $player->steam_id }}</p> --}}
                                 </li>
                                 {{-- For pagination TODO: --}}
-                            @empty
+                                @empty
                                 <li class="text-danger"> No players </li>
-                            @endforelse
-
+                                @endforelse
+                                
+                            </div>
                         </div>
                     </div>
+
+                    {{-- Card footer --}}
                     <div class="card-footer">
                         {{-- {{ $players->links() }} --}}
                     </div>
                     {{-- </div> --}}
                 </div>
-
+                
+            </div>
         @endif
     @endif
-@endsection
+@enddiv
