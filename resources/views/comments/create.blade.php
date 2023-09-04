@@ -30,11 +30,12 @@
                 <input class="form-control" name="commentPlayerId" type="hidden" value="{{ old('commentPlayerId') ?? $previousId }} ">
                 {{-- <input class="form-control" name="commentUserId" type="hidden" value="{{ $previousId }}"> --}}
 
-                <input class="form-control" name="title" type="text" placeholder="Title">
-                <textarea class="form-control" name="comment" id="" cols="30" rows="10"></textarea>
+                <input class="form-control" name="title" type="text" placeholder="Comment title *">
+                <textarea class="form-control" name="comment" id="" cols="30" rows="10" placeholder="Enter your message here"></textarea>
 
                 <div class="card-footer">
-                    <input type="submit" value="Envoye" name="saveArticle" id="saveArticle" class="btn btn-success">
+                    <input type="submit" value="Send" name="saveArticle" id="saveArticle" class="btn btn-success">
+                    <a class="btn btn-danger" href="{{ route('players.index') }}">Back to all players</a>
                 </div>
             </div>
         </form>

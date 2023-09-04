@@ -22,8 +22,8 @@ class PlayerController extends Controller
      */
     public function index()
     {
-        // $allPlayers = Player::paginate('15');
-        $allPlayers = Player::all();
+        $allPlayers = Player::paginate('5');
+        // $allPlayers = Player::all();
         // dd($allPlayers);
         return view('players.index', ['players' => $allPlayers]);
     }
