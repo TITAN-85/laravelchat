@@ -22,7 +22,7 @@ class PlayerController extends Controller
      */
     public function index()
     {
-        $allPlayers = Player::paginate('5');
+        $allPlayers = Player::paginate('20');
         // $allPlayers = Player::all();
         // dd($allPlayers);
         return view('players.index', ['players' => $allPlayers]);
@@ -50,16 +50,6 @@ class PlayerController extends Controller
         $request->validate([
             "playerName" => 'required',
         ]);
-
-        // dd($request->playerName);
-
-
-        // $validated = validator($request->all(), [
-        //     "name" => ['required', 'min:2', 'max:40'],
-        //     // "steam_id" => 'max:50'
-        // ]);
-        // dd($validated);
-
 
         $player = Player::where('name', $request->playerName)->first();
         // dd($player);
@@ -152,15 +142,13 @@ class PlayerController extends Controller
         // ]);
         // Player::paginate('15')
         $search = $request->search;
-        // $search = $_GET['search'];
-        // dd($search);
-
-        // $player = Player::where()->orderBy('name')->paginate(10)
         $players = Player::where('name', 'LIKE', "%{$search}%")->get();
 
+        FIXME:
+        // $paginatedPlayers = $players::paginate('15');
         // dd($players);
-
-        return view('players.index', ['players' => $players]);
+        // return view('players.index', ['playersPick' => $paginatedPlayers]);
+        return view('players.index', ['playersPick' => $players]);
     }
 
     /**

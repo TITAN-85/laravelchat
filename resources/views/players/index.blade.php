@@ -60,11 +60,10 @@
         </div>
     </div>
 
-
-
+    @isset($players)
+    @if ($players)
     <div class="my-4">
 
-        {{-- ============================== CARD ============================= --}}
         <div class="card ">
 
             {{-- Card header --}}
@@ -80,8 +79,10 @@
                     @forelse ($players as $player)
                     <li class="list-unstyled">
                         <a class="text-decoration-none" href="{{ route('players.show', $player->player_id) }}">{{ $loop->index + 1 }}&nbsp&nbsp{{ $player->name }}</a>
-                        {{-- <p>player id: {{ $player->player_id }}</p> --}}
-                        {{-- <p>steam id: {{ $player->steam_id }}</p> --}}
+                        @if (Auth::user()->email == 'candualexandru@gmail.com')
+                        <div>player id: {{ $player->player_id }}</div>
+                        <div>steam id: {{ $player->steam_id }}</div>
+                        @endif
                     </li>
                     {{-- For pagination TODO: --}}
                     @empty
@@ -96,6 +97,45 @@
             {{ $players->links() }}
         </div>
     </div>
+    @endif
+    @endisset
+
+    @isset($playersPick)
+    @if($playersPick)
+
+    <div class="my-4">
+        <div class="card ">
+
+            {{-- Card header --}}
+            <div class="card-header">
+                <div class="font-weight-bold">List of Players</div>
+            </div>
+
+            {{-- Card body --}}
+            <div class="card-body">
+                {{-- <chat-messages :messages="messages"></chat-messages> --}}
+
+                <ul class="">
+                    @forelse ($playersPick as $player)
+                    <li class="list-unstyled">
+                        <a class="text-decoration-none" href="{{ route('players.show', $player->player_id) }}">{{ $loop->index + 1 }}&nbsp&nbsp{{ $player->name }}</a>
+                        @if (Auth::user()->email == 'candualexandru@gmail.com');
+                        <div>player id: {{ $player->player_id }}</div>
+                        <div>steam id: {{ $player->steam_id }}</div>
+                        @endif
+                    </li>
+                    @empty
+                    <li class="text-danger"> No players </li>
+                    @endforelse
+                <ul>
+            </div>
+        </div>
+        <div class="card-footer">
+
+        </div>
+    </div>
+    @endif
+    @endisset
     
 </div>
 

@@ -137,19 +137,17 @@
                 <div class="card-body">
                     <ul>
                         @forelse ($comments as $comment)
-                            <div class="card-body border">
-                                @if (Auth::user()->email == 'candualexandru@gmail.com')
-                                    <p>comment name: {{ $comment->name }}</p>
-                                    <p>comment id: {{ $comment->comment_id }}</p>
-                                    <p>created_at: {{ $comment->created_at }}</p>
-                                @endif
-                                <p><strong>Title:</strong> {{ $comment->title }}</p>
-                                <p><strong>comment:</strong> {{ $comment->comment }}</p>
-                                {{-- <p><strong>Rate:</strong> {{ $comment->rate_points }}</p> --}}
-                            </div>
+                        <li class="border m-2 list-unstyled">
+                            @if (Auth::user()->email == 'candualexandru@gmail.com')
+                            <div class="p-2">comment name: {{ $comment->name }}</div>
+                            <div class="p-2">comment id: {{ $comment->comment_id }}</div>
+                            <div class="p-2">created_at: {{ $comment->created_at }}</div>
+                            @endif
+                        <div class="p-2"><strong>Title:</strong> {{ $comment->title }}</div>
+                        <div class="p-2"><strong>comment:</strong> {{ $comment->comment }}</div>
                         </li>
                         @empty
-                        <li class="text-danger"> No comments </li>
+                        <li class="text-danger p-2"> No comments </li>
                         @endforelse
                     </ul>
                 </div>

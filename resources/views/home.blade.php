@@ -13,6 +13,7 @@
 </header>
 
 <x-countdowntimer></x-countdowntimer>
+<x-video_galery></x-video_galery>
 
 @endsection
 
