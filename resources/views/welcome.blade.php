@@ -15,6 +15,8 @@
 <x-countdowntimer></x-countdowntimer>
 <x-video_galery></x-video_galery>
 
+<div id="game-time"></div>
+
 @endsection
 
 

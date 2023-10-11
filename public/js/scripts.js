@@ -52,4 +52,41 @@ window.addEventListener('DOMContentLoaded', event => {
         });
     });
 
+
+
+
+
+// Set the time ratio (1 in-game day = 30 minutes real time)
+const timeRatio = 30; // in minutes
+
+// Function to update and display the in-game time
+function updateGameTime() {
+    // Get the current real-world time in minutes
+    const realTime = new Date();
+    const realMinutes = realTime.getMinutes() + realTime.getHours() * 60;
+
+    // Calculate the in-game time
+    const inGameMinutes = realMinutes * timeRatio;
+
+    // Convert in-game minutes to hours and minutes
+    const inGameHours = Math.floor(inGameMinutes / 60);
+    const inGameMinutesRemainder = inGameMinutes % 60;
+
+    // Display the in-game time on the website
+    const gameTimeElement = document.getElementById('game-time');
+    gameTimeElement.textContent = `In-Game Time: ${inGameHours}:${inGameMinutesRemainder}`;
+}
+
+// Update the in-game time every minute
+setInterval(updateGameTime, 60000);
+
+// Call the function immediately to display the initial time
+updateGameTime();
+
+
+
+
+
+    
+
 });
